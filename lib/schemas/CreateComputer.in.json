@@ -1,0 +1,96 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Contains the inputs for the <a>CreateComputer</a> operation.",
+            "properties": {
+                "ComputerAttributes": {
+                    "description": "An array of <a>Attribute</a> objects that contain any LDAP attributes to apply to the computer account.",
+                    "items": {
+                        "description": "Represents a named directory attribute.",
+                        "properties": {
+                            "Name": {
+                                "description": "The name of the attribute.",
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            "Value": {
+                                "description": "The value of the attribute.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "ComputerName": {
+                    "description": "The name of the computer account.",
+                    "maxLength": 15,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "DirectoryId": {
+                    "description": "The identifier of the directory in which to create the computer account.",
+                    "pattern": "^d-[0-9a-f]{10}$",
+                    "type": "string"
+                },
+                "OrganizationalUnitDistinguishedName": {
+                    "description": "The fully-qualified distinguished name of the organizational unit to place the computer account in.",
+                    "maxLength": 2000,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "Password": {
+                    "description": "A one-time password that is used to join the computer to the directory. You should generate a random, strong password to use for this parameter.",
+                    "format": "password",
+                    "maxLength": 64,
+                    "minLength": 8,
+                    "pattern": "[\\u0020-\\u00FF]+",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "DirectoryId",
+                "ComputerName",
+                "Password"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

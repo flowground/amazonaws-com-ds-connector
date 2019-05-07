@@ -1,0 +1,93 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "DirectoryId": {
+                    "description": "Identifier of the AWS Managed Microsoft AD directory that you want to share with other AWS accounts.",
+                    "pattern": "^d-[0-9a-f]{10}$",
+                    "type": "string"
+                },
+                "ShareMethod": {
+                    "description": "The method used when sharing a directory to determine whether the directory should be shared within your AWS organization (<code>ORGANIZATIONS</code>) or with any AWS account by sending a directory sharing request (<code>HANDSHAKE</code>).",
+                    "enum": [
+                        "ORGANIZATIONS",
+                        "HANDSHAKE"
+                    ],
+                    "type": "string"
+                },
+                "ShareNotes": {
+                    "description": "A directory share request that is sent by the directory owner to the directory consumer. The request includes a typed message to help the directory consumer administrator determine whether to approve or reject the share invitation.",
+                    "format": "password",
+                    "maxLength": 1024,
+                    "type": "string"
+                },
+                "ShareTarget": {
+                    "description": "Identifier for the directory consumer account with whom the directory is to be shared.",
+                    "properties": {
+                        "Id": {
+                            "description": "Identifier of the directory consumer account.",
+                            "maxLength": 64,
+                            "minLength": 1,
+                            "type": "string"
+                        },
+                        "Type": {
+                            "description": "Type of identifier to be used in the <code>Id</code> field.",
+                            "enum": [
+                                "ACCOUNT"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Id",
+                        "Type"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "DirectoryId",
+                "ShareTarget",
+                "ShareMethod"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

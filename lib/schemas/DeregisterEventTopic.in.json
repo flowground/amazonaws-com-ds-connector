@@ -1,0 +1,63 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Removes the specified directory as a publisher to the specified SNS topic.",
+            "properties": {
+                "DirectoryId": {
+                    "description": "The Directory ID to remove as a publisher. This directory will no longer send messages to the specified SNS topic.",
+                    "pattern": "^d-[0-9a-f]{10}$",
+                    "type": "string"
+                },
+                "TopicName": {
+                    "description": "The name of the SNS topic from which to remove the directory as a publisher.",
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "pattern": "[a-zA-Z0-9_-]+",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "DirectoryId",
+                "TopicName"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

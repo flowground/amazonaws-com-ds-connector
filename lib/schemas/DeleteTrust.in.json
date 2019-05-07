@@ -1,0 +1,59 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Deletes the local side of an existing trust relationship between the AWS Managed Microsoft AD directory and the external domain.",
+            "properties": {
+                "DeleteAssociatedConditionalForwarder": {
+                    "description": "Delete a conditional forwarder as part of a DeleteTrustRequest.",
+                    "type": "boolean"
+                },
+                "TrustId": {
+                    "description": "The Trust ID of the trust relationship to be deleted.",
+                    "pattern": "^t-[0-9a-f]{10}$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "TrustId"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

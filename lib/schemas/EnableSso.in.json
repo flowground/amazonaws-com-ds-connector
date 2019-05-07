@@ -1,0 +1,68 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Contains the inputs for the <a>EnableSso</a> operation.",
+            "properties": {
+                "DirectoryId": {
+                    "description": "The identifier of the directory for which to enable single-sign on.",
+                    "pattern": "^d-[0-9a-f]{10}$",
+                    "type": "string"
+                },
+                "Password": {
+                    "description": "The password of an alternate account to use to enable single-sign on. This is only used for AD Connector directories. For more information, see the <i>UserName</i> parameter.",
+                    "format": "password",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "UserName": {
+                    "description": "<p>The username of an alternate account to use to enable single-sign on. This is only used for AD Connector directories. This account must have privileges to add a service principal name.</p> <p>If the AD Connector service account does not have privileges to add a service principal name, you can specify an alternate account with the <i>UserName</i> and <i>Password</i> parameters. These credentials are only used to enable single sign-on and are not stored by the service. The AD Connector service account is not changed.</p>",
+                    "minLength": 1,
+                    "pattern": "[a-zA-Z0-9._-]+",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "DirectoryId"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

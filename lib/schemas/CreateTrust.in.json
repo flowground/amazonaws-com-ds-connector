@@ -1,0 +1,104 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "<p>AWS Directory Service for Microsoft Active Directory allows you to configure trust relationships. For example, you can establish a trust between your AWS Managed Microsoft AD directory, and your existing on-premises Microsoft Active Directory. This would allow you to provide users and groups access to resources in either domain, with a single set of credentials.</p> <p>This action initiates the creation of the AWS side of a trust relationship between an AWS Managed Microsoft AD directory and an external domain.</p>",
+            "properties": {
+                "ConditionalForwarderIpAddrs": {
+                    "description": "The IP addresses of the remote DNS server associated with RemoteDomainName.",
+                    "items": {
+                        "pattern": "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "DirectoryId": {
+                    "description": "The Directory ID of the AWS Managed Microsoft AD directory for which to establish the trust relationship.",
+                    "pattern": "^d-[0-9a-f]{10}$",
+                    "type": "string"
+                },
+                "RemoteDomainName": {
+                    "description": "The Fully Qualified Domain Name (FQDN) of the external domain for which to create the trust relationship.",
+                    "pattern": "^([a-zA-Z0-9]+[\\\\.-])+([a-zA-Z0-9])+[.]?$",
+                    "type": "string"
+                },
+                "SelectiveAuth": {
+                    "description": "Optional parameter to enable selective authentication for the trust.",
+                    "enum": [
+                        "Enabled",
+                        "Disabled"
+                    ],
+                    "type": "string"
+                },
+                "TrustDirection": {
+                    "description": "The direction of the trust relationship.",
+                    "enum": [
+                        "One-Way: Outgoing",
+                        "One-Way: Incoming",
+                        "Two-Way"
+                    ],
+                    "type": "string"
+                },
+                "TrustPassword": {
+                    "description": "The trust password. The must be the same password that was used when creating the trust relationship on the external domain.",
+                    "format": "password",
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "pattern": "(.|\\s)*\\S(.|\\s)*",
+                    "type": "string"
+                },
+                "TrustType": {
+                    "description": "The trust relationship type. <code>Forest</code> is the default.",
+                    "enum": [
+                        "Forest",
+                        "External"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "DirectoryId",
+                "RemoteDomainName",
+                "TrustPassword",
+                "TrustDirection"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

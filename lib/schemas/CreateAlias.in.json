@@ -1,0 +1,63 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Contains the inputs for the <a>CreateAlias</a> operation.",
+            "properties": {
+                "Alias": {
+                    "description": "<p>The requested alias.</p> <p>The alias must be unique amongst all aliases in AWS. This operation throws an <code>EntityAlreadyExistsException</code> error if the alias already exists.</p>",
+                    "maxLength": 62,
+                    "minLength": 1,
+                    "pattern": "^(?!d-)([\\da-zA-Z]+)([-]*[\\da-zA-Z])*",
+                    "type": "string"
+                },
+                "DirectoryId": {
+                    "description": "The identifier of the directory for which to create the alias.",
+                    "pattern": "^d-[0-9a-f]{10}$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "DirectoryId",
+                "Alias"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

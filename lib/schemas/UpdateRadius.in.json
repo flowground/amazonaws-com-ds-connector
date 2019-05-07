@@ -1,0 +1,116 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Contains the inputs for the <a>UpdateRadius</a> operation.",
+            "properties": {
+                "DirectoryId": {
+                    "description": "The identifier of the directory for which to update the RADIUS server information.",
+                    "pattern": "^d-[0-9a-f]{10}$",
+                    "type": "string"
+                },
+                "RadiusSettings": {
+                    "description": "A <a>RadiusSettings</a> object that contains information about the RADIUS server.",
+                    "properties": {
+                        "AuthenticationProtocol": {
+                            "description": "The protocol specified for your RADIUS endpoints.",
+                            "enum": [
+                                "PAP",
+                                "CHAP",
+                                "MS-CHAPv1",
+                                "MS-CHAPv2"
+                            ],
+                            "type": "string"
+                        },
+                        "DisplayLabel": {
+                            "description": "Not currently used.",
+                            "maxLength": 64,
+                            "minLength": 1,
+                            "type": "string"
+                        },
+                        "RadiusPort": {
+                            "description": "The port that your RADIUS server is using for communications. Your on-premises network must allow inbound traffic over this port from the AWS Directory Service servers.",
+                            "maximum": 65535,
+                            "minimum": 1025,
+                            "type": "integer"
+                        },
+                        "RadiusRetries": {
+                            "description": "The maximum number of times that communication with the RADIUS server is attempted.",
+                            "maximum": 10,
+                            "minimum": 0,
+                            "type": "integer"
+                        },
+                        "RadiusServers": {
+                            "description": "An array of strings that contains the IP addresses of the RADIUS server endpoints, or the IP addresses of your RADIUS server load balancer.",
+                            "items": {
+                                "maxLength": 256,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "RadiusTimeout": {
+                            "description": "The amount of time, in seconds, to wait for the RADIUS server to respond.",
+                            "maximum": 20,
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        "SharedSecret": {
+                            "description": "Required for enabling RADIUS on the directory.",
+                            "format": "password",
+                            "maxLength": 512,
+                            "minLength": 8,
+                            "type": "string"
+                        },
+                        "UseSameUsername": {
+                            "description": "Not currently used.",
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "required": [
+                "DirectoryId",
+                "RadiusSettings"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
